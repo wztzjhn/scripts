@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys
 num_argv = len(sys.argv)
 
-print '----------- remove data with repeated keys ----------'
-print '-------- (data appeared later being deleted) --------'
+print('----------- remove data with repeated keys ----------')
+print('-------- (data appeared later being deleted) --------')
 if ( num_argv<3 ):
     sys.exit("Usage: data_rmdulp filename key1 key2 ...")
 elif ( sys.argv[1]=='--help' ):
@@ -12,14 +12,14 @@ else:
     filename=sys.argv[1]
     keys=sys.argv[2:]
     num_keys=len(keys)
-    print "keys used for removing dulplicates: ",keys
+    print("keys used for removing dulplicates: ",keys)
 
 readfile = open(filename, "r")
 data = [line.split() for line in readfile]
 readfile.close()
 
 if ( data[0][0][0]!='#' ):
-    print 'data[0][0]:\t', data[0][0]
+    print('data[0][0]:\t', data[0][0])
     sys.exit("Check if your 1st line starts with #?")
 
 row_total=len(data)
@@ -30,7 +30,7 @@ col_end    = len(data[row_begin])-1
 col_keys   = []
 for key in keys:
     col_keys.append(data[row_begin-1].index(key))
-print 'col_keys-1:\t\t',col_keys
+print('col_keys-1:\t\t',col_keys)
 
 # remove dulplicated lines
 for row in range(row_end,row_begin,-1):
@@ -52,6 +52,6 @@ for row in range(0,len(data)):
         writefile.write(word + "\t")
     writefile.write("\n")
 writefile.close()
-print '------------------------------------------------------'
+print('------------------------------------------------------')
 
 
